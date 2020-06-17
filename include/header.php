@@ -30,6 +30,26 @@
     color: red !important;
     margin: 10px !important;
 }
+.msg{
+  text-align: center;
+  color: red;
+  font-size: large;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
     </style>
 
