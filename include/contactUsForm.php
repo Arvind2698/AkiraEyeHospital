@@ -17,7 +17,6 @@ if(isset($_POST['submit'])){
 }else{
     $errorMsg='';
 }
-
 ?>
 
 <h3 class="mb-4">Get in touch</h3>
