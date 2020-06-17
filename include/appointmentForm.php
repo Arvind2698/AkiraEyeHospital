@@ -4,10 +4,9 @@ if(isset($_POST['submit'])){
     $name=cleanInput($_POST['name']);
     $age=cleanInput($_POST['age']);
     $location=cleanInput($_POST['location']);
-    $phone=cleanInput($_POST['phone']);
+    $phone=(int)cleanInput($_POST['phone']);
     $date=cleanInput($_POST['date']);
     $time=cleanInput($_POST['time']);
-
     if(empty($name)){
         $errorMsg='Name Cannot be empty';
     }else if(empty($age)){
@@ -23,7 +22,7 @@ if(isset($_POST['submit'])){
     }else if(!preg_match("/^[1-9][0-9]{9}$/",$phone)){
         $errorMsg="Please enter a valid phone number";
     }else{
-        $query="insert into appointment(name,age,branch,phone,date,time) values( '".$name."' , ".$age." , '".$location."' , '".$phone."' , '".$date."' , '".$time."' ); ";
+        $query="insert into appointment(name,age,branch,phone,date,time) values( '".$name."' , ".$age." , '".$location."' , ".$phone." , '".$date."' , '".$time."' ); ";
         $result=mysqli_query($connection,$query);
         $errorMsg="Appointment Saved!";
         $name=$age=$location=$phone=$date=$time='';
@@ -45,7 +44,7 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="number" value="<?php echo $age; ?>" name="age" class="form-control" placeholder="Age">
+                                            <input type="text" value="<?php echo $age; ?>" name="age" class="form-control" placeholder="Age">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -53,8 +52,8 @@ if(isset($_POST['submit'])){
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="fa fa-chevron-down"></span></div>
-                                                    <select name="location" id="" class="form-control">
-			                      	                    <option value="<?php echo $location; ?>">Select Branch</option>
+                                                    <select name="location"  id="" class="form-control">
+			                      	                    <option value="">Select Branch</option>
 			                                            <option value="Rajahmundry">Rajahmundry</option>
 			                                            <option value="Vijaywada">Vijaywada</option>
 			                                        </select>
@@ -66,7 +65,7 @@ if(isset($_POST['submit'])){
                                         <div class="form-group">
                                             <div class="form-field">
                                                 <div class="select-wrap">
-                                                    <input type="number" value="<?php echo $phone; ?>" name="phone" class="form-control" placeholder="Phone number">
+                                                    <input type="test" value="<?php echo $phone; ?>" name="phone" class="form-control" placeholder="Phone number">
                                                 </div>
                                             </div>
                                         </div>
