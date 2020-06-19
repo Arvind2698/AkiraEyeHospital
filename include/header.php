@@ -54,3 +54,4 @@ tr:nth-child(even) {
     </style>
 
 <body>
+  <?php ob_start(); ?>

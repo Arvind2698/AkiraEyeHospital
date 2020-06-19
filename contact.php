@@ -29,6 +29,7 @@
 							<div class="text pl-3">
 							<p><span>Address:</span>Paper Mill Rd,Opp: Kalavati Kalyana Mandapam, Rajahmundry, Andhra Pradesh 533104</p>
 							</div>
+
 						</div>
 						<div class="dbox w-100 d-flex align-items-center">
 							<div class="icon d-flex align-items-center justify-content-center">
