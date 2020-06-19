@@ -1,7 +1,11 @@
-<?php include 'include/header.php'; ?>
+<?php session_start() ?>
 
-<?php include 'include/jumbotron.php'; ?>
-
+<?php $username=$_SESSION['username']; ?>
+<?php
+if(empty($username)){
+  header("Location: index.php");
+}
+?>
 <?php
 if(isset($_GET['con'])){
   $conId=$_GET['con'];
@@ -19,11 +23,22 @@ if(isset($_GET['del'])){
 }
 ?>
 
+<?php include 'include/header.php'; ?>
 
+<?php include 'include/jumbotron.php'; ?>
+
+<?php include 'include/adminNavBar.php'; ?>
 
 <hr>
+<div class="container">
 <?php
-$query="select * from appointment;";
+$queryLocation="select location from admin where userName='".$username."';";
+$resultLocation=mysqli_query($connection,$queryLocation);
+while($resLocation=mysqli_fetch_assoc($resultLocation)){
+  $location=$resLocation['location'];
+}
+
+$query="select * from appointment where branch='".$location."';";
 $result=mysqli_query($connection,$query);
 if(mysqli_num_rows($result)>0){
 ?>
@@ -49,7 +64,7 @@ while($res=mysqli_fetch_assoc($result)){
     echo  "<td>".$res['date']."</td>";
     echo  "<td>".$res['time']."</td>";
     echo  "<td>".$res['status']."</td>";
-    echo  "<td><a href='adminIndex.php?con=".$id."'>Confirm</a> <a href='adminIndex.php?del=".$id."'>Delete</td></a>";
+    echo  "<td><a href='adminIndex.php?con=".$id."'>Confirm</a> <a onClick=\"javascript: return confirm('Are you sure you want to delete this appointment?'); \" href='adminIndex.php?del=".$id."'>Delete</td></a>";
     echo "</tr>";
 }
 }else{
@@ -58,4 +73,4 @@ while($res=mysqli_fetch_assoc($result)){
 ?>
 
 </table>
-
+</div>
