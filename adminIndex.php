@@ -6,6 +6,7 @@ if(empty($username)){
   header("Location: index.php");
 }
 ?>
+<?php include 'include/header.php'; ?>
 <?php
 if(isset($_GET['con'])){
   $conId=$_GET['con'];
@@ -23,7 +24,6 @@ if(isset($_GET['del'])){
 }
 ?>
 
-<?php include 'include/header.php'; ?>
 
 <?php include 'include/jumbotron.php'; ?>
 

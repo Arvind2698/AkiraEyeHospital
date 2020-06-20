@@ -31,6 +31,8 @@ if(isset($_POST['submit'])){
     }else if(empty($location)){
         $errorMsg="Please enter location";
     }else{
+        $randSalt="$2a$09$"."anexamplestringforsalt$";
+        $password=crypt($password,$randSalt);
         $query="insert into admin(userName,password,location) values('".$userName."','".$password."','".$location."');";
         $result=mysqli_query($connection,$query);
         $errorMsg="Success!!";
@@ -45,7 +47,7 @@ if(isset($_GET['del'])){
     $delId=$_GET['del'];
     $queryDel="delete from admin where id=$delId ;";
     $resultDel=mysqli_query($connection,$queryDel);
-    header("Location: addAdmin.php");
+    header("Location: addAdmin.php?ac=2");
 }
 
 

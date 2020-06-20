@@ -13,7 +13,10 @@ if(isset($_POST['submit'])){
         $header="From: ".$from;
         mail($to,$subject,$message,$header);
         $errorMsg="Thank you for getting in touch";
+        $queryMsg="insert into contactus(name,email,subject,message) values('".$name."','".$from."','".$subject."','".$message."');";
+        $queryMsgResult=mysqli_query($connection,$queryMsg);
     }
+
 }else{
     $errorMsg='';
 }
@@ -21,7 +24,7 @@ if(isset($_POST['submit'])){
 
 <h3 class="mb-4">Get in touch</h3>
 <span class="errorMsg"><?php echo $errorMsg; ?></span>
-<form method="POST" id="contactForm" class="contactForm">
+<form method="POST" action="" id="contactForm" class="contactForm">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
